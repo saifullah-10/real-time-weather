@@ -1,6 +1,8 @@
 const btn = document.querySelector(".submit");
 const country = document.querySelector("#country");
 const temp = document.querySelector(".temp");
+const humidity = document.querySelector(".humidity_value");
+const wind = document.querySelector(".wind_speed");
 const apiKey = "5529a24c78d3724329504419376b2113";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric";
 // image change section
@@ -23,6 +25,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   console.log(dataArr);
   temp.innerHTML = parseInt(dataArr[0].main.temp) + "° C";
+  humidity.innerHTML = dataArr[0].main.humidity + "%";
+  wind.innerHTML = dataArr[0].wind.speed + "km/h";
   if (dataArr[0].weather[0].main === "Clouds") {
     haze.style.display = "block";
   } else {
@@ -41,6 +45,8 @@ btn.addEventListener("click", async () => {
   }
   console.log(dataArr);
   temp.innerHTML = parseInt(dataArr[0].main.temp) + "° C";
+  humidity.innerHTML = dataArr[0].main.humidity + "%";
+  wind.innerHTML = dataArr[0].wind.speed + "km/h";
   if (
     dataArr[0].weather[0].main === "Clouds" ||
     dataArr[0].weather[0].main === "Snow"
